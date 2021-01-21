@@ -22,7 +22,8 @@ public class Network {
     private Socket socket;
     private ChatClient chatClient;
     private String nickname;
-
+    private String username;
+    private boolean authResult = false;
 
     public Network() {
         this(SERVER_ADDRESS, SERVER_PORT);
@@ -95,7 +96,7 @@ public class Network {
             case INFO_MESSAGE: {
                 MessageInfoCommandData data = (MessageInfoCommandData) command.getData();
                 Platform.runLater(() -> {
-                    controller.appendMessage("Server: " + data.getMessage());
+                    controller.appendMessage(data.getMessage());
                 });
                 break;
             }
@@ -154,13 +155,13 @@ public class Network {
 
     public void close() {
         try {
-            if (socket != null && socket.isConnected()) {
             socket.close();
-            }
-        } catch (IOException e) {
+        }
+         catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     private Command readCommand() throws IOException {
         Command command = null;
@@ -176,5 +177,9 @@ public class Network {
 
     public void sendAuthMessage(String login, String password) throws IOException {
         sendCommand(authCommand(login, password));
+    }
+
+    public String getNickname() {
+        return nickname;
     }
 }

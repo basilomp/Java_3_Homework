@@ -1,12 +1,22 @@
 package org.client;
 
+import chat.MyServer;
+import chat.User;
+import chat.handler.ClientHandler;
+import clientserver.Command;
+import clientserver.CommandType;
+import clientserver.commands.AuthOkCommandData;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Controller {
 
@@ -14,6 +24,9 @@ public class Controller {
     private String recipient;
     private String sender;
     private Stage primaryStage;
+    private ClientHandler clientHandler;
+
+
 
 
     @FXML
@@ -40,6 +53,7 @@ public class Controller {
         });
         return cell;
     });
+
     }
 
     public TextField getTextField() {
@@ -51,6 +65,14 @@ public class Controller {
 
     @FXML
     private TextArea chatLog;
+
+    public TextArea getChatLog() {
+        return chatLog;
+    }
+
+    public void setChatLog(TextArea chatLog) {
+        this.chatLog = chatLog;
+    }
 
     @FXML
     private Button textButton;
@@ -82,6 +104,14 @@ public class Controller {
     public void appendMessage(String message) {
         chatLog.appendText(message);
         chatLog.appendText(System.lineSeparator());
+        Log.start(network.getNickname());
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime time = LocalTime.now();
+        String t = dtf.format(time);
+        Log.writeToFile("[" + t + "] " + message);
+
+
+
     }
 
     public void setNetwork(Network network) {
@@ -91,4 +121,6 @@ public class Controller {
     public void setStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
-}
+
+
+    }

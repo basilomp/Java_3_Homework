@@ -6,6 +6,7 @@ import chat.auth.DBAuthService;
 import chat.handler.ClientHandler;
 import chat.handler.DBHandler;
 import clientserver.Command;
+import org.client.Log;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -91,8 +92,11 @@ public class MyServer {
 
             if (sender == null) {
                 client.sendMessage(message);
+
             } else {
                 client.sendMessage(sender.getNickname(), message);
+
+
             }
 
         }
@@ -139,6 +143,7 @@ public class MyServer {
             for (ClientHandler client : clients) {
              if (client.getNickname().equals(recipient)) {
                     client.sendMessage(sender.getNickname(), ("To " + recipient + ": ") + message);
+
             }
 
             }
