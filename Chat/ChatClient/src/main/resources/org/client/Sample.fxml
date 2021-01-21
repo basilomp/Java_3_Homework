@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.Controller">
+   <items>
+      <AnchorPane fx:id="leftPane" maxWidth="150.0" minWidth="150.0" prefHeight="512.0" prefWidth="125.0">
+         <children>
+            <Label fx:id="participantsLabel" layoutX="5.0" layoutY="10.0" text="Participants" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="1.0" />
+            <ListView fx:id="participants" layoutX="5.0" layoutY="24.0" prefHeight="488.0" prefWidth="150.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="27.0">
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+            </ListView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="rightPane" prefHeight="484.0" prefWidth="507.0">
+         <children>
+             <SplitPane fx:id="rightSplit" dividerPositions="0.9235294117647059" orientation="VERTICAL" prefHeight="502.0" prefWidth="507.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <items>
+                  <AnchorPane fx:id="textSplit" minHeight="0.0" minWidth="0.0" prefHeight="277.0" prefWidth="505.0">
+                     <children>
+                        <Label fx:id="chatLabel" alignment="TOP_LEFT" layoutX="5.0" layoutY="5.0" text="Chat" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                        <TextArea fx:id="chatLog" editable="false" layoutY="29.0" prefHeight="433.0" prefWidth="495.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="25.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="45.0" minWidth="0.0" prefHeight="35.0" prefWidth="485.0">
+                     <children>
+                        <SplitPane dividerPositions="0.8876889848812095" maxHeight="40.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane maxHeight="40.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <TextField fx:id="textField" layoutY="4.0" maxHeight="25.0" onAction="#sendMessage" prefHeight="25.0" prefWidth="408.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane maxWidth="51.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <Button fx:id="textButton" maxHeight="25.0" maxWidth="51.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="25.0" prefWidth="51.0" text="Send" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>
