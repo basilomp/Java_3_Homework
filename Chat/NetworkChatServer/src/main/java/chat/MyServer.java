@@ -15,6 +15,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import static clientserver.Command.updateUsersListCommand;
@@ -23,6 +25,9 @@ public class MyServer {
 
     private final List<ClientHandler> clients = new ArrayList<>();
     private AuthService authService;
+    Logger logger;
+
+
 
     public MyServer() {
         this.authService = new BaseAuthService();
@@ -30,8 +35,11 @@ public class MyServer {
 
 
     public void start(int port) throws IOException {
+
+
         if (!DBHandler.connectDB()) {
-            throw new RemoteException("DB connection error");
+            throw new RemoteException();
+//        (Level.INFO("DB connection error"));
         }
         authService = new DBAuthService();
 
