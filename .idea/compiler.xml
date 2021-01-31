@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ChatClient" />
+        <module name="Lesson_6_re" />
+        <module name="Java_3_Homework" />
+        <module name="Chat" />
+        <module name="Lesson_4" />
+        <module name="Lesson_5" />
+        <module name="Lesson_6" />
+      </profile>
+      <profile name="Disabled">
+        <module name="NetworkChatClientServer" />
+        <module name="NetworkChatServer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Chat" target="15" />
+      <module name="ChatClient" target="15" />
+      <module name="Java_3_Homework" target="15" />
+      <module name="Lesson_4" target="15" />
+      <module name="Lesson_5" target="15" />
+      <module name="Lesson_6" target="15" />
+      <module name="Lesson_6_re" target="15" />
+      <module name="NetworkChatServer" target="15" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

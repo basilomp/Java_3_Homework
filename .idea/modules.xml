@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Chat/Chat.iml" filepath="$PROJECT_DIR$/Chat/Chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Chat/ChatClient/ChatClient.iml" filepath="$PROJECT_DIR$/Chat/ChatClient/ChatClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java_3_Homework.iml" filepath="$PROJECT_DIR$/.idea/Java_3_Homework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_4/Lesson_4.iml" filepath="$PROJECT_DIR$/Lesson_4/Lesson_4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_5/Lesson_5.iml" filepath="$PROJECT_DIR$/Lesson_5/Lesson_5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Java_Level_3/Lesson_6/Lesson_6.iml" filepath="$PROJECT_DIR$/../Java_Level_3/Lesson_6/Lesson_6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Java_Level_3/Lesson_6_re/Lesson_6_re.iml" filepath="$PROJECT_DIR$/../Java_Level_3/Lesson_6_re/Lesson_6_re.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Chat/NetworkChatClientServer/NetworkChatClientServer.iml" filepath="$PROJECT_DIR$/Chat/NetworkChatClientServer/NetworkChatClientServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Chat/NetworkChatServer/NetworkChatServer.iml" filepath="$PROJECT_DIR$/Chat/NetworkChatServer/NetworkChatServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Java_Level_3/Lesson_6/main/main.iml" filepath="$PROJECT_DIR$/../Java_Level_3/Lesson_6/main/main.iml" />
+    </modules>
+  </component>
+</project>

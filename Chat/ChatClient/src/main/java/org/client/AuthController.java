@@ -1,5 +1,6 @@
 package org.client;
 
+import clientserver.CommandType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -28,16 +29,20 @@ public class AuthController {
 
         if (login == null || login.isBlank() || password == null || password.isBlank()) {
             ChatClient.showNetworkError("Enter login and password", "Validation error", null);
+
             return;
         }
 
         try {
             network.sendAuthMessage(login, password);
+
+
         } catch (IOException e) {
             ChatClient.showNetworkError(e.getMessage(), "Auth error", null);
 
             e.printStackTrace();
         }
+
 
 
     }

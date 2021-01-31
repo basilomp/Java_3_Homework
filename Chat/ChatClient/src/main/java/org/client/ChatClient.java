@@ -1,5 +1,7 @@
 package org.client;
 
+import clientserver.Command;
+import clientserver.commands.AuthOkCommandData;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
@@ -33,24 +35,16 @@ public class ChatClient extends Application {
     private Stage authDialogStage;
     private Network network;
     private Controller controller;
-
+    private String clientNickname;
 
     public void updateUsers(List<String> users) {
         controller.participants.setItems(FXCollections.observableList(users));
     }
 
 
-
-
-
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
-
-
-
-
-
 
 
         FXMLLoader loader = new FXMLLoader();
@@ -75,6 +69,7 @@ public class ChatClient extends Application {
 
         controller.setNetwork(network);
         controller.setStage(primaryStage);
+
 
         network.waitMessage(controller);
 
@@ -141,11 +136,13 @@ public class ChatClient extends Application {
 
     public void activeChatDialog(String nickname) {
         primaryStage.setTitle(nickname);
+        clientNickname = nickname;
         state = ChatClientState.CHAT;
         authDialogStage.close();
         primaryStage.show();
+        controller.getChatLog().appendText(Log.displayLog(network.getNickname()));
         controller.getTextField().requestFocus();
     }
 
 
-}
+    }

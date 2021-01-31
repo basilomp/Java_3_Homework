@@ -7,6 +7,7 @@ import clientserver.commands.AuthCommandData;
 import clientserver.commands.MessageToMyself;
 import clientserver.commands.PrivateMessageCommandData;
 import clientserver.commands.PublicMessageCommandData;
+import org.client.Log;
 
 import java.io.*;
 import java.net.Socket;
@@ -21,6 +22,7 @@ public class ClientHandler {
     private ObjectInputStream in;
     private ObjectOutputStream out;
     private String nickname;
+    private Log log;
 
 
     public ClientHandler(MyServer myServer, Socket clientSocket) {
@@ -37,6 +39,8 @@ public class ClientHandler {
         new Thread(() -> {
             try {
                 authentication();
+//                Log log = new Log();
+//                log.start(nickname);
                 readMessages();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -74,6 +78,7 @@ public class ClientHandler {
 
                 sendCommand(authOkCommand(nickname));
                 setNickname(nickname);
+//                Log.start(nickname);
                 myServer.broadcastMessage(String.format("'%s' joined chat", nickname), null);
                 myServer.subscribe(this);
                 return;
@@ -100,6 +105,7 @@ public class ClientHandler {
     private void closeConnection() throws IOException {
         myServer.unsubscribe(this);
         String unsubscribedClient = this.getNickname();
+        Log.stop();
         clientSocket.close();
      }
 
@@ -116,16 +122,19 @@ public class ClientHandler {
                     String receiver = data.getReceiver();
                     String message = data.getMessage();
                     if (receiver.equals(this.nickname)) {
+//                        log.writeToFile(message);
                         break;
                     } else {
                     myServer.sendPrivateMessage(this, receiver, message);
-                    }
+//                    log.writeToFile(message);
                     break;
+                    }
                 }
                 case PUBLIC_MESSAGE: {
                     PublicMessageCommandData data = (PublicMessageCommandData) command.getData();
                     String message = data.getMessage();
                     myServer.broadcastMessage(message, this);
+//                    log.writeToFile(message);
                     break;
                 }
                 case END:
@@ -160,4 +169,6 @@ public class ClientHandler {
     private void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
+
 }
